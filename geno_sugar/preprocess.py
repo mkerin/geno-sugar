@@ -17,6 +17,18 @@ def filter_by_missing(max_miss=0.01):
     return f
 
 
+def filter_samples(complete_sample_index):
+    """
+    Return function that filters samples according to array of row indexes
+    """
+
+    def f(G, bim):
+        G_out = G[complete_sample_index, :]
+        return G_out, bim
+
+    return f
+
+
 def filter_by_maf(min_maf=0.01):
     """
     return function that filters by maf
